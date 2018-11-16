@@ -30,13 +30,13 @@ OBJ_THRESHOLD    = 0.3#0.5
 NMS_THRESHOLD    = 0.3#0.45
 ANCHORS          = [7.34264,4.87195, 9.78978,6.50238, 14.05418,9.34468, 19.59295,13.03933, 26.13363,17.39940]
 
-NO_OBJECT_SCALE  = 1.0
+NO_OBJECT_SCALE  = 5.0
 OBJECT_SCALE     = 5.0
 COORD_SCALE      = 1.0
 CLASS_SCALE      = 1.0
 
-BATCH_SIZE       = 32
-WARM_UP_BATCHES  = 0
+BATCH_SIZE       = 2
+WARM_UP_BATCHES  = 242
 TRUE_BOX_BUFFER  = 50
 
 
@@ -61,21 +61,21 @@ for i in range(0,4):
     x = LeakyReLU(alpha=0.1)(x)
     x = MaxPooling2D(pool_size=(2, 2))(x)
 
-# Layer 6
+Layer 6
 x = Conv2D(512, (3,3), strides=(1,1), padding='same', name='conv_6', use_bias=False)(x)
 x = BatchNormalization(name='norm_6')(x)
 x = LeakyReLU(alpha=0.1)(x)
 x = MaxPooling2D(pool_size=(2, 2), strides=(1,1), padding='same')(x)
 
 # Layer 7-8
-for i in range(0,2):
+for i in range(0,1):
     x = Conv2D(1024, (3,3), strides=(1,1), padding='same', name='conv_' + str(i+7), use_bias=False)(x)
     x = BatchNormalization(name='norm_' + str(i+7))(x)
     x = LeakyReLU(alpha=0.1)(x)
 
 
 # Layer 9
-x = Conv2D(BOX * (4 + 1 + CLASS), (1,1), strides=(1,1), padding='same', name='conv_23')(x)
+x = Conv2D(BOX * (4 + 1 + CLASS), (1,1), strides=(1,1), padding='same', name='conv_9')(x)
 print x.shape
 output = Reshape((GRID_H, GRID_W, BOX, 4 + 1 + CLASS))(x)
 
