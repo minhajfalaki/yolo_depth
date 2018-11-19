@@ -24,13 +24,12 @@ Dependencies are
   
   
 For training your own dataset, The hyperparameters to tweek with are.
-
--epochs - Number of training cycle
--learning rate ('lr' in optimiizer)
--custom loss function. This i have used the same loss function in this link https://stats.stackexchange.com/questions/287486/yolo-loss-function-explanation 
--If augumentaion is needed in training batch put jitter=True
--Add or Remove layers in the Tiny Yolo network.
--We can also change the number of filters in the layers. 
--Adjust the 4 scale values. The scale values is used to determine how much to penalize prediction of confidence of object predictors.
--change the number of warmup batches(between 0-5). Warmup training is used to get adjusted with the inputs anchors and sizes initially for the network.
--Change the batch size. Its always better to increase it according to the hardware available.
+	-epochs - Number of training cycle
+	-learning rate ('lr' in optimiizer)
+	-custom loss function. This i have used the same loss function in this link https://stats.stackexchange.com/questions/287486/yolo-loss-function-explanation 
+	-If augumentaion is needed in training batch put jitter=True
+	-Add or Remove layers in the Tiny Yolo network.
+	-We can also change the number of filters in the layers. 
+	-Adjust the 4 scale values. The scale values is used to determine how much to penalize prediction of confidence of object predictors.
+	-change the number of warmup batches(between 0-5). Warmup training is used to get adjusted with the inputs anchors and sizes initially for the network.
+	-Change the batch size. Its always better to increase it according to the hardware available.
