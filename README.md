@@ -3,12 +3,19 @@ In this project I am trying to detect human from depth images(in the form of .pg
 I am using YoloV2, Specifically TinyYolo.
 
 Dependencies are
+
 	-python 2
+	
 	-tensorflow
+	
 	-keras>=2.0
+	
 	-imgaug
+	
 	-tqdm
+	
 	-numpy
+	
 	-openc-cv
   
  Steps to be followed to train and test.
