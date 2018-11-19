@@ -1,0 +1,56 @@
+{
+    "model" : {
+        "backend":              "Tiny Yolo",
+        "input_size_w":         480,
+        "input_size_h":         480,
+        "gray_mode":            true,
+        "anchors":              [7.34264,4.87195, 9.78978,6.50238, 14.05418,9.34468, 19.59295,13.03933, 26.13363,17.39940],        
+        "max_box_per_image":    5,        
+        "labels":               ["person_in_depth_image"]
+    },
+
+    "parser_annotation_type":    "txt",
+
+    "train": {
+        "train_csv_file":       "train.txt",
+        "train_csv_base_path":  "",
+        "train_image_folder":   "",
+        "train_annot_folder":   "",     
+          
+        "train_times":          8,
+        "pretrained_weights":   "",
+        "batch_size":           4,
+        "learning_rate":        1e-4,
+        "nb_epochs":            150,
+        "warmup_epochs":        3,
+
+        "workers":              12,
+        "max_queue_size":       40,
+        "early_stop":           true,
+        "tensorboard_log_dir":  "./logs/1",
+
+        "object_scale":         5.0 ,
+        "no_object_scale":      1.0,
+        "coord_scale":          1.0,
+        "class_scale":          1.0,
+
+        "saved_weights_name":   "../tiny_yolo_backend.h5",
+        "debug":                false
+    },
+
+    "valid": {
+        "valid_csv_file":       "val.txt",
+        "valid_csv_base_path":  "",
+        "valid_image_folder":   "",
+        "valid_annot_folder":   "",
+
+        "valid_times":          1
+    },
+
+    "backup":{
+        "create_backup":        true,
+        "redirect_model":       true,
+        "backup_path":          "../backup",
+        "backup_prefix":        "Tiny_yolo_VOC"
+    }
+}

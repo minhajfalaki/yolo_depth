@@ -1,17 +1,20 @@
+from imgaug import augmenters as iaa
+from keras.utils import Sequence
+# from utils import BoundBox, bbox_iou
+from tqdm import tqdm
+# import xml.etree.ElementTree as ET
 import numpy as np
+import imgaug as ia
+import os
 import copy
 import cv2
 
 
-def parse_annotation_txt(txt_file,dataset):
+def parse_annotation_txt(txt_file):
 
     print("parsing {} txt file can took a while, wait please.".format(txt_file))
     all_imgs = []
     seen_labels = {}
-    if dataset == 1:
-        set_name = "train1/"
-    else:
-        set_name = "validation1/"
 
     all_imgs_indices = {}
     count_indice = 0
@@ -21,7 +24,7 @@ def parse_annotation_txt(txt_file,dataset):
             annot = each.split(" ")
             if annot[0] == "": continue
             try:
-                fname = set_name+annot[0]+".pgm"
+                fname = 'depth/'+annot[0]+".pgm"
 
                 xmin = int(annot[1])
                 ymin = int(annot[2])
@@ -71,6 +74,10 @@ def parse_annotation_txt(txt_file,dataset):
 
 
 
+a = parse_annotation_txt("labels.txt")
+print len(a)
+for each in a[0]:
+    print each
 
-
+                
 
